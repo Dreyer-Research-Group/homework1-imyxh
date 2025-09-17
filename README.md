@@ -1,3 +1,8 @@
+Submission here: [hw01.pdf](hw01.pdf)
+=====================================
+
+<hr>
+
 [![Review Assignment Due Date](https://classroom.github.com/assets/deadline-readme-button-22041afd0340ce965d47ae6ef1cefeee28c7c493a6346c4f15d667ab976d596c.svg)](https://classroom.github.com/a/xGuWEZ-O)
 # General instructions
 Programs can be written in any language (but python is recommended). In addition to the program, you should have a writeup that contains the plots requested in the homework questions, answers to any analytical or explanation questions, and  a short description of your code and how to run it. This can be done in, e.g., latex, markdown, etc. Combining the code and writeup in jupyter notebooks is highly recommended. Code and writeup should be submitted using git via github in the repo
