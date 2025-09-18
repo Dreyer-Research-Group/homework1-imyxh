@@ -24,14 +24,23 @@
     often occur when subtracting close large numbers.
 ]]
 
-// TODO
+If $b^2 >> 4 a c$, then $sqrt(b^2 - 4 a c) ≈ b$, in which case the $+$ solution
+with end up with something asymptotic to $-b + b$ in the numerator, which is
+prone to roundoff error. #miniqed
 
 #problem(number: [1(b)])[
     Provide an alternative expression that will have smaller errors in the
     situation you describe in (a).
 ]
 
-// TODO
+The $-$ solution is not a risk, so we ignore it for now. For the $+$ solution,
+we multiply by one:
+
+$
+x = (-b + sqrt(b^2 - 4 a c)) / (2 a)
+    ((b + sqrt(b^2 - 4 a c)) / (b + sqrt(b^2 - 4 a c)))
+= ans((4 a c) / (2 a (b + sqrt(b^2 - 4 a c)))) med.
+$
 
 // }}}
 
@@ -50,9 +59,9 @@
     expansion for a given number of terms $n$.
 ]]
 
-// TODO
+#ans[Done]. See the `exponential_series` function in `hw01.rs`.
 
-#problem(number: [1(b)])[
+#problem(number: [2(b)])[
     For $n$ ranging between 0 and 100, compare the result with the exponent
     calculated with a built-in function or function from a numerical library
     (e.g. `numpy.exp`) in the following way. Plot the error defined by
@@ -65,16 +74,26 @@
     (e.g., $x = 20$ and $x = -20$). Describe what you see.
 ]
 
-// TODO
+The plot:
 
-#problem(number: [1(c)])[
+#figure(image("2b.svg", width: 100mm))
+
+#problem(number: [2(c)])[
     Consider the following (trivial) equality: $e^(-x) = (e^(-1))^x$. Write a
     program that utilizes this equality to get a more accurate series
     expansion for large negative exponents. Plot $ve_n$ on a log-log plot to
     demonstrate that you have achieved this.
 ]
 
-// TODO
+This one's easy; we just rerun with
+
+```rust
+fn exponential_series_alt(n: u64, x: f64) -> f64 {
+    return 1.0 / exponential_series(n, -x);
+}
+```
+
+#figure(image("2c.svg", width: 100mm))
 
 // }}}
 
