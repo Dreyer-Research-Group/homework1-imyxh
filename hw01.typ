@@ -252,7 +252,7 @@ As instructed:
 
 As instructed:
 
-#figure(image("4a.svg", width: 100mm))
+#figure(image("5a.svg", width: 100mm))
 
 // TODO
 
