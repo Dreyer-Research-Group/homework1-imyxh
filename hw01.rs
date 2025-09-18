@@ -261,5 +261,63 @@ fn main() -> Result<(), Box<dyn std::error::Error>> {
     ))?;
     f.present()?;
 
+    // 5(a)
+    // ----
+    fn phi(a: u64, x: f64) -> f64 { x.powi((a - 1).try_into().unwrap()) * (-x).exp() }
+    let f = SVGBackend::new("5a.svg", (400, 300)).into_drawing_area();
+    let _ = f.fill(&WHITE);
+    let f = f.margin(10, 10, 10, 10);
+    let mut chart = ChartBuilder::on(&f)
+        .set_label_area_size(LabelAreaPosition::Left, 40)
+        .set_label_area_size(LabelAreaPosition::Bottom, 40)
+        .caption("5(a)", ("Libertinus Serif", 20))
+        .build_cartesian_2d(0f64..10f64, 0f64..1.4f64)?
+    ;
+    chart.configure_mesh()
+        .x_desc("x")
+        .y_desc("phi")
+        .draw()?
+    ;
+    chart
+        .draw_series(LineSeries::new(
+            (0..10000).map(|x| {(
+                0.001 * (x as f64),
+                phi(2, 0.001 * (x as f64))
+            )}),
+            &RED
+        ))?
+        .label("a=2")
+        .legend(|(x, y)| PathElement::new(vec![(x, y), (x + 20, y)], &RED))
+    ;
+    chart
+        .draw_series(LineSeries::new(
+            (0..10000).map(|x| {(
+                0.001 * (x as f64),
+                phi(3, 0.001 * (x as f64))
+            )}),
+            &GREEN
+        ))?
+        .label("a=3")
+        .legend(|(x, y)| PathElement::new(vec![(x, y), (x + 20, y)], &GREEN))
+    ;
+    chart
+        .draw_series(LineSeries::new(
+            (0..10000).map(|x| {(
+                0.001 * (x as f64),
+                phi(4, 0.001 * (x as f64))
+            )}),
+            &BLUE
+        ))?
+        .label("a=4")
+        .legend(|(x, y)| PathElement::new(vec![(x, y), (x + 20, y)], &BLUE))
+    ;
+    chart.configure_series_labels()
+        .position(SeriesLabelPosition::UpperRight)
+        .border_style(&BLACK)
+        .background_style(&WHITE.mix(0.8))
+        .draw()?
+    ;
+    f.present()?;
+
     Ok(())
 }

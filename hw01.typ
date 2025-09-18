@@ -163,6 +163,7 @@ As instructed:
 #figure(image("4a.svg", width: 100mm))
 
 // TODO
+/*
 
 #problem(number: [4(b)])[
     Write a program that uses the _adaptive trapezoid rule_ to calculate the
@@ -222,6 +223,7 @@ As instructed:
 // TODO
 
 // }}}
+*/
 
 // problem 5 {{{
 #problem(number: [5])[
@@ -247,6 +249,10 @@ As instructed:
 #subproblem(number: [5(a)])[
     Plot $vp(x)$ for $a in {2,3,4}$.
 ]]
+
+As instructed:
+
+#figure(image("4a.svg", width: 100mm))
 
 // TODO
 
