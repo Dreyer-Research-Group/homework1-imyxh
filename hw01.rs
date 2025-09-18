@@ -232,10 +232,33 @@ fn main() -> Result<(), Box<dyn std::error::Error>> {
         .x_desc("Δx")
         .draw()?
     ;
-    chart
-        .draw_series(LineSeries::new(ffffocd_err, &BLUE))?
-        .label("x=-20")
+    chart.draw_series(LineSeries::new(ffffocd_err, &BLUE))?;
+    f.present()?;
+
+    // 4(a)
+    // ----
+    let f = SVGBackend::new("4a.svg", (400, 300)).into_drawing_area();
+    let _ = f.fill(&WHITE);
+    let f = f.margin(10, 10, 10, 10);
+    let mut chart = ChartBuilder::on(&f)
+        .set_label_area_size(LabelAreaPosition::Left, 40)
+        .set_label_area_size(LabelAreaPosition::Bottom, 40)
+        .caption("4(a)", ("Libertinus Serif", 20))
+        .build_cartesian_2d(0f64..1f64, 0f64..1f64)?
     ;
+    chart
+        .configure_mesh()
+        .x_desc("x")
+        .y_desc("sin(sqrt(100x))^2")
+        .draw()?
+    ;
+    chart.draw_series(LineSeries::new(
+        (0..10000).map(|x| {(
+            0.0001 * (x as f64),
+            (100.0 * 0.0001 * (x as f64)).sqrt().sin().powi(2)
+        )}),
+        &BLUE
+    ))?;
     f.present()?;
 
     Ok(())

@@ -142,8 +142,6 @@ Fourth order central:
 
 #figure(image("3c.svg", width: 100mm))
 
-// TODO
-
 // }}}
 
 // problem 4 {{{
@@ -159,6 +157,10 @@ Fourth order central:
 #subproblem(number: [4(a)])[
     Plot the integrand over the range of the integral.
 ]]
+
+As instructed:
+
+#figure(image("4a.svg", width: 100mm))
 
 // TODO
 
