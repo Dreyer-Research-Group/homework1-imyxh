@@ -78,6 +78,10 @@ The plot:
 
 #figure(image("2b.svg", width: 100mm))
 
+You can see that we actually never get to the correct answer for $x=-20$,
+because somewhere along the process of going to $n = 100$, `factorial` on a
+`u64` overflowed.
+
 #problem(number: [2(c)])[
     Consider the following (trivial) equality: $e^(-x) = (e^(-1))^x$. Write a
     program that utilizes this equality to get a more accurate series
@@ -109,6 +113,34 @@ fn exponential_series_alt(n: u64, x: f64) -> f64 {
     use a second-order central difference? How about a fourth-order central
     difference?
 ]
+
+First order forward:
+
+#figure(image("3a.svg", width: 100mm))
+
+It's pretty much a straight line on a log-log plot. I think this makes sense,
+because the fractional error is (the magnitude of)
+
+$
+(
+    (sin(x + difference(x)) - sin x) / difference(x)
+    - cos x
+) / (cos x)
+=
+((sin x) (cos difference(x) - 1)) / (difference(x) cos x) - 1
+≈
+((sin x) (- difference(x)^2)) / (2 difference(x) cos x) - 1
+$
+
+which is linear.
+
+Second order central:
+
+#figure(image("3b.svg", width: 100mm))
+
+Fourth order central:
+
+#figure(image("3c.svg", width: 100mm))
 
 // TODO
 

@@ -1,6 +1,9 @@
 Submission here: [hw01.pdf](hw01.pdf)
 =====================================
 
+The rust programming language is not the _most_ suited to the tasks in this
+course, but I wish to learn it, so it's what I use. To run the code, install [cargo](https://doc.rust-lang.org/cargo/), then `cargo run`.
+
 <hr>
 
 [![Review Assignment Due Date](https://classroom.github.com/assets/deadline-readme-button-22041afd0340ce965d47ae6ef1cefeee28c7c493a6346c4f15d667ab976d596c.svg)](https://classroom.github.com/a/xGuWEZ-O)
