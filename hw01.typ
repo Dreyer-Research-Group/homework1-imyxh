@@ -162,18 +162,15 @@ As instructed:
 
 #figure(image("4a.svg", width: 100mm))
 
-// TODO
-/*
-
 #problem(number: [4(b)])[
     Write a program that uses the _adaptive trapezoid rule_ to calculate the
     integral to an approximate accuracy of $ve = 10^(-6)$, using the following
     procedure. Start with the trapezoid rule using a single subinterval. Double
     the number of subintervals and recalculate the integral. Continue to double
     the number of subintervals until the error is less than $10^(-6)$. Recall
-    that the error is given by $ve_i = 1/3 (I_i - I_(i-1)$ where the number of
+    that the error is given by $ve_i = 1/3 (I_i - I_(i-1))$ where the number of
     subintervals $N_i$ used to calculate $I_i$ is twice that used to calculate
-    $I_(i-1$. To make your implementation more efficient, use the fact that
+    $I_(i-1)$. To make your implementation more efficient, use the fact that
 
     $
     I_i = 1/2 I_(i-1) + h_i sum_k f(a + k h_i)
@@ -183,7 +180,11 @@ As instructed:
     runs over _odd numbers_ from 1 to $N_i - 1$.
 ]
 
-// TODO
+#ans[Done] in `hw01.rs` (see `trapezoid_integrate`):
+
+```
+4b: subintervals = 4096, ret = 0.455832058278271
+```
 
 #problem(number: [4(c)])[
     Write a separate program that uses _Romberg integration_ to solve the
@@ -212,7 +213,13 @@ As instructed:
     subintervals necessary compared to the approach of part (b)?
 ]
 
-// TODO
+#ans[Done] in `hw01.rs` (see `romberg_integrate`):
+
+```
+4c: subintervals = 64, ret = 0.45583249446137863
+```
+
+You can see that the number of subintervals reduced from 4096 to 64.
 
 #problem(number: [4(d)])[
     Use the Gauss--Legendre approach to calculate the integral. What order
@@ -220,10 +227,33 @@ As instructed:
     You can find tabulated weights and points online.
 ]
 
-// TODO
+#ans[Done] in `hw01.rs`, `quadgl.rs`, and `quadgl/quadgl_data.rs`. We see:
+
+```
+4d: n = 2, ret = 0.6273262731105194
+4d: n = 3, ret = 0.23603692720508807
+4d: n = 4, ret = 0.4267093047956246
+4d: n = 5, ret = 0.5631145323435273
+4d: n = 6, ret = 0.470222775561266
+4d: n = 7, ret = 0.45644586447958324
+4d: n = 8, ret = 0.45584440641945256
+4d: n = 9, ret = 0.455832655443542
+4d: n = 10, ret = 0.455832533065431
+4d: n = 11, ret = 0.4558325323120352
+4d: n = 12, ret = 0.4558325323090928
+```
+
+Doing analytic integration in SageMath, we can see that the actual answer is
+0.455832532309085:
+
+```sage
+sage: N(integrate(sin(sqrt(100*x))^2, x, 0, 1))
+0.455832532309085
+```
+
+and we are within $10^(-6)$ of that with just $ans(n = 9)$.
 
 // }}}
-*/
 
 // problem 5 {{{
 #problem(number: [5])[
@@ -254,13 +284,20 @@ As instructed:
 
 #figure(image("5a.svg", width: 100mm))
 
-// TODO
-
 #problem(number: [5(b)])[
     For what value of $x$ is the integrand $vp(x)$ maximum?
 ]
 
-// TODO
+Setting the derivative equal to zero:
+
+$
+0 = dv(,x) vp(x)
+= e^(-x) (a - 1) x^(a - 2) - x^(a - 1) e^(-x)
+implies
+(a - 1) x^(a - 2) = x^(a - 1)
+implies
+ans(x = (a - 1)) med.
+$
 
 #problem(number: [5(c)])[
     Choose the value $c$ in our transformation such that the peak of the
