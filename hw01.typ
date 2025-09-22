@@ -364,7 +364,5 @@ and with quadgl integration in `hw01.rs` we see
 
 which is pretty close to the analytical values of 1, 2, and 6.
 
-// TODO
-
 // }}}
 
