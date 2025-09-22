@@ -343,8 +343,9 @@ fn main() -> Result<(), Box<dyn std::error::Error>> {
     // 5(d)
     // ----
     fn phiz(c: u64, z: f64) -> f64 {
-        (c as f64) * ((c as f64) * z).powi(c as i32)
-            * (- (c as f64) * z / (1.0 - z)).exp()
+        (c as f64)
+            * ((c as f64) * z).powi(c as i32)
+            * (-(c as f64) * z / (1.0 - z)).exp()
             * (1.0 - z).powi(-2 - c as i32)
     }
     let mut ret: f64;
@@ -355,4 +356,3 @@ fn main() -> Result<(), Box<dyn std::error::Error>> {
 
     Ok(())
 }
-

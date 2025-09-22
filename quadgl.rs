@@ -17,4 +17,3 @@ pub fn integrate(n: usize, f: impl Fn(f64) -> f64, x0: f64, x1: f64) -> f64 {
     let mid = (x1 + x0) / 2.0;
     return half * _integrate_impl(n, |x| f(mid + half * x));
 }
-
