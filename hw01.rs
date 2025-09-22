@@ -340,6 +340,19 @@ fn main() -> Result<(), Box<dyn std::error::Error>> {
         .draw()?;
     f.present()?;
 
+    // 5(d)
+    // ----
+    fn phiz(c: u64, z: f64) -> f64 {
+        (c as f64) * ((c as f64) * z).powi(c as i32)
+            * (- (c as f64) * z / (1.0 - z)).exp()
+            * (1.0 - z).powi(-2 - c as i32)
+    }
+    let mut ret: f64;
+    for c in 1..=3 {
+        ret = quadgl::integrate(50, |z| phiz(c, z), 0.0, 1.0);
+        println!("5d: a = {c}+1, ret = {ret}");
+    }
+
     Ok(())
 }
 

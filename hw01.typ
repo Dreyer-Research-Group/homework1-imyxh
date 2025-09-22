@@ -307,7 +307,13 @@ $
     ≤ z ≤ 1$, making our numerical integration more accurate.
 ]
 
-// TODO
+Simply:
+
+$
+1/2 = (a-1) / (a - 1 + c)
+implies
+ans(c = a - 1) med.
+$
 
 #problem(number: [5(d)])[
     Find $Γ(a)$ for a few different values of $a > 1$ using any numerical
@@ -320,6 +326,43 @@ $
     Note that roundoff error may come into play in the integrand. Recognizing
     that you can write $x^(a - 1) = e^((a - 1) ln x)$ can help minimize this.
 ]
+
+We have
+
+$
+z(x+c) = x  implies  x = (c z) / (1 - z)
+implies
+dd(x) = (c/(1 - z) + (c z)/(1 - z)^2) dd(z)
+= c/(1 - z)^2 dd(z)
+$
+
+Our new integral is
+
+$
+Γ(a)
+=
+    integral_0^1
+        ((c z) / (1 - z))^c
+        exp(-(c z) / (1 - z))
+    c/(1 - z)^2 dd(z)
+=
+    integral_0^1
+        c (c z)^c / (1 - z)^(2+c)
+        exp(-(c z) / (1 - z))
+    dd(z)
+$
+
+and with quadgl integration in `hw01.rs` we see
+
+#ans(
+```
+5d: a = 1+1, ret = 1.0000000000058678
+5d: a = 2+1, ret = 2.0000000000000653
+5d: a = 3+1, ret = 5.999999999999983
+```
+)
+
+which is pretty close to the analytical values of 1, 2, and 6.
 
 // TODO
 
